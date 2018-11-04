@@ -33,12 +33,10 @@ namespace DanTest
             services.AddSingleton(mapper);
 
 
-            var connection = "Data Source=danTest.db";
+            var connection = Configuration.GetConnectionString("Sqlite");
             services.AddDbContext<DanTestContext>
                 (options => options.UseSqlite(connection));
-            services
-                .AddScoped(p => new DanTestContext(p.GetService<DbContextOptions<DanTestContext>>()));
-            // Add framework services.
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

@@ -10,9 +10,9 @@ namespace DanTest.Providers
     class RepoProvider : IRepoProvider
     {
         private readonly DanTestContext _context;
-        public RepoProvider()
+        public RepoProvider(DanTestContext context)
         {
-            _context = new DanTestContext(new DbContextOptions<DanTestContext>());
+            _context = context;
         }
         public async Task InsertRepositories(IEnumerable<Repo> repositories)
         {
